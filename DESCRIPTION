@@ -1,0 +1,21 @@
+Package: pkguse
+Type: Package
+Title: Take Inventory of Package Use
+Version: 0.0.1
+Description: Finds and counts use of R packages in user supplied package
+    directories.
+License: MIT + file LICENSE
+Encoding: UTF-8
+LazyData: true
+Authors@R: person("Michael W.", "Kearney", ,
+      "kearneymw@missouri.edu", role = c("aut", "cre"),
+      comment = c(ORCID = "0000-0002-0730-4694"))
+Imports: 
+    tfse,
+    rlang,
+    dplyr,
+    ggplot2,
+    magrittr,
+    tibble,
+    utils
+RoxygenNote: 6.1.1

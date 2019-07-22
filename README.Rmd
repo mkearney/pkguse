@@ -1,0 +1,56 @@
+---
+output: github_document
+---
+
+<!-- README.md is generated from README.Rmd. Please edit that file -->
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>",
+  fig.path = "man/figures/README-",
+  out.width = "100%"
+)
+```
+# pkguse
+
+<!-- badges: start -->
+<!-- badges: end -->
+
+The goal of pkguse is to help users take inventory of their most used packages
+
+## Installation
+
+You can install the dev version of pkguse from [Github](https://github.com/mkearney/pkguse) with:
+
+``` r
+remotes::install_github("mkearney/pkguse")
+```
+
+## Example
+
+This is a basic use example:
+
+```{r use}
+## load {pkguse}
+library(pkguse)
+
+## supply dir locations
+p <- pkg_use(c("~/Documents", "~/Dropbox", "~/R"))
+
+## view output (top 25)
+print(p, n = 25)
+```
+
+The output has methods for `plot`
+
+```{r plot}
+## plot pkguse (top 25)
+plot(p, n = 25)
+```
+
+and `summary`
+
+```{r summary}
+summary(p)
+```
