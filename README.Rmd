@@ -38,7 +38,7 @@ library(pkguse)
 ## supply dir locations
 p <- pkg_use(c("~/Documents", "~/Dropbox", "~/R"))
 
-## view output (top 25)
+## view freq table [tibble] output
 print(p, n = 25)
 ```
 

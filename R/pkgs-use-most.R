@@ -25,8 +25,8 @@ read_r_files <- function(...) {
   r <- unlist(lapply(dirs, list.files, pattern = "\\.(R|Rmd|Rmarkdown|rmd|r)$",
     recursive = TRUE,
     full.names = TRUE))
-  x <- unlist(lapply(r, tfse::readlines))
-
+  suppressWarnings( x <- unlist(lapply(r, tfse::readlines)))
+  x
 }
 
 parse_r_pkgs <- function(x) {

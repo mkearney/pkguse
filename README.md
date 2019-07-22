@@ -29,11 +29,8 @@ library(pkguse)
 
 ## supply dir locations
 p <- pkg_use(c("~/Documents", "~/Dropbox", "~/R"))
-#> Warning in readLines(encoding = "UTF-8", skipNul = TRUE, warn = FALSE, con
-#> = structure(4L, class = c("file", : invalid input found on input connection
-#> '/Users/kearneymw/R/boost/libs/thread/test/Carbon.r'
 
-## view output (top 25)
+## view freq table [tibble] output
 print(p, n = 25)
 #> # A tibble: 350 x 2
 #>    pkg           n
