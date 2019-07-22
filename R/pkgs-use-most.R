@@ -22,12 +22,14 @@ pkg_use <- function(...) {
 
 read_r_files <- function(...) {
   dirs <- list(...)
-  r <- unlist(lapply(dirs, list.files, pattern = "\\.(R|Rmd|Rmarkdown|rmd|r)$",
+  r <- unlist(lapply(dirs, list.files, pattern = "\\.(R|Rmd|Rmarkdown|rmd|r|Rhistory)$",
     recursive = TRUE,
-    full.names = TRUE))
+    full.names = TRUE,
+    all.files = TRUE))
   suppressWarnings( x <- unlist(lapply(r, tfse::readlines)))
   x
 }
+
 
 parse_r_pkgs <- function(x) {
   ## via pkg::
@@ -39,7 +41,10 @@ parse_r_pkgs <- function(x) {
     ## via requireNamespace('pkg')
     tfse::regmatches_(x, "(?<=requireNamespace\\(')[A-Za-z][[:alnum:]\\.]+(?=\\')", drop = TRUE),
     ## via requireNamespace("pkg")
-    tfse::regmatches_(x, "(?<=requireNamespace\\(\")[A-Za-z][[:alnum:]\\.]+(?=\\\")", drop = TRUE))
+    tfse::regmatches_(x, "(?<=requireNamespace\\(\")[A-Za-z][[:alnum:]\\.]+(?=\\\")", drop = TRUE),
+    ## via pacman::p_load("pkg")
+    tfse::regmatches_(x, "(?<=p_load\\()[A-Za-z][[:alnum:]\\, ]+(?=\\))", drop = TRUE) %>%
+      strsplit(",") %>%  unlist() %>% trimws())
 }
 
 arrange_and_factor <- function(.x, cat, val) {
