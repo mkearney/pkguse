@@ -21,8 +21,9 @@ pkg_use <- function(...) {
 
 
 read_r_files <- function(...) {
-  dirs <- list(...)
-  r <- unlist(lapply(dirs, list.files, pattern = "\\.(R|Rmd|Rmarkdown|rmd|r|Rhistory)$",
+  dirs <- unlist(list(...))
+  r <- unlist(lapply(dirs, list.files,
+    pattern = "\\.(R|Rmd|Rmarkdown|rmd|r|Rhistory)$",
     recursive = TRUE,
     full.names = TRUE,
     all.files = TRUE))
