@@ -8,8 +8,8 @@ pkg_use(...)
 }
 \arguments{
 \item{...}{Directory location in which files ending in '.R' and '.Rmd' will
-be searched for packages (via fully qualified namespace or calls to library
-or require).}
+be searched for packages (via fully qualified namespace, calls to library
+or require and also pacman::p_load). In addition, '.Rhistory' will also be searched for packages.}
 }
 \value{
 A pkguse object, which is really just a tibble with specialized
